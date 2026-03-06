@@ -1,3 +1,9 @@
+<?php
+/**
+ * VERSIE 1 - 8 JANUARI 2026
+ * basic hard gecodeerde antwoorden op veelgestelde vragen
+ */
+
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Package, ShoppingCart, HelpCircle, Loader2 } from 'lucide-react';
 
