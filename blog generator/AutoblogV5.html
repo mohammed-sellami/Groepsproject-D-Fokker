@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Generator V5</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .spinner {
+            border: 3px solid #f3f4f6;
+            border-top: 3px solid #4f46e5;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
+    <div class="max-w-4xl mx-auto">
+        <div class="bg-white rounded-lg shadow-xl p-8 mb-6">
+            <div class="flex items-center gap-3 mb-6">
+                <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                </svg>
+                <h1 class="text-3xl font-bold text-gray-800">Blog Generator V5</h1>
+            </div>
+            
+            <div class="mb-6">
+                <div class="flex gap-3">
+                    <input
+                        type="text"
+                        id="topicInput"
+                        placeholder="Voer een onderwerp in (bijv. tafel, smartphone, koffie)"
+                        class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none"
+                    />
+                    <button
+                        id="startBtn"
+                        onclick="handleStart()"
+                        class="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors font-medium"
+                    >
+                        Start
+                    </button>
+                </div>
+            </div>
+
+            <div id="errorBox" class="hidden p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 mb-4"></div>
+
+            <div id="statusBox" class="hidden flex items-center gap-3 p-4 bg-blue-50 border border-blue-200 rounded-lg text-blue-700 mb-4">
+                <div class="spinner"></div>
+                <span id="statusText"></span>
+            </div>
+
+            <div id="subtopicsContainer" class="hidden mb-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-xl font-semibold text-gray-800">
+                        Onderwerpen (<span id="subtopicCount">0</span>)
+                    </h2>
+                    <button
+                        id="generateAllBtn"
+                        onclick="generateAllBlogs()"
+                        class="hidden px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors flex items-center gap-2"
+                    >
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        Genereer alle blogs
+                    </button>
+                    <button
+                        id="downloadBtn"
+                        onclick="downloadAllBlogs()"
+                        class="hidden px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors flex items-center gap-2"
+                    >
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        Download alle blogs
+                    </button>
+                </div>
+                <div id="subtopicsList" class="grid gap-3"></div>
+            </div>
+        </div>
+
+        <div id="blogsContainer" class="space-y-6"></div>
+    </div>
+
+    <script>
+        const API_KEY = 'MIJN API KEY!!'; // ← Vul hier je Google AI Studio API sleutel in 
+
+
+        let currentTopic = '';
+        let subtopics = [];
+        let blogs = {};
+        let isLoading = false;
+
+        const elements = {
+            topicInput: document.getElementById('topicInput'),
+            startBtn: document.getElementById('startBtn'),
+            errorBox: document.getElementById('errorBox'),
+            statusBox: document.getElementById('statusBox'),
+            statusText: document.getElementById('statusText'),
+            subtopicsContainer: document.getElementById('subtopicsContainer'),
+            subtopicsList: document.getElementById('subtopicsList'),
+            subtopicCount: document.getElementById('subtopicCount'),
+            generateAllBtn: document.getElementById('generateAllBtn'),
+            downloadBtn: document.getElementById('downloadBtn'),
+            blogsContainer: document.getElementById('blogsContainer')
+        };
+
+        // Enter key support
+        elements.topicInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !isLoading && elements.topicInput.value.trim()) {
+                handleStart();
+            }
+        });
+
+        function showError(message) {
+            elements.errorBox.textContent = message;
+            elements.errorBox.classList.remove('hidden');
+        }
+
+        function hideError() {
+            elements.errorBox.classList.add('hidden');
+        }
+
+        function showStatus(message) {
+            elements.statusText.textContent = message;
+            elements.statusBox.classList.remove('hidden');
+        }
+
+        function hideStatus() {
+            elements.statusBox.classList.add('hidden');
+        }
+
+        function setLoading(loading) {
+            isLoading = loading;
+            elements.startBtn.disabled = loading;
+            elements.topicInput.disabled = loading;
+            elements.startBtn.classList.toggle('bg-gray-400', loading);
+            elements.startBtn.classList.toggle('cursor-not-allowed', loading);
+        }
+
+        async function handleStart() {
+            const topic = elements.topicInput.value.trim();
+            if (!topic) return;
+
+            currentTopic = topic;
+            subtopics = [];
+            blogs = {};
+            
+            hideError();
+            setLoading(true);
+            showStatus('Genereer 10 belangrijke onderwerpen...');
+            
+            elements.subtopicsContainer.classList.add('hidden');
+            elements.blogsContainer.innerHTML = '';
+
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{
+                                text: `Genereer precies 10 belangrijke onderwerpen over "${topic}". Geef ALLEEN de onderwerpen, elk op een nieuwe regel, zonder nummering of extra tekst. Bijvoorbeeld:
+Geschiedenis en oorsprong
+Materialen en constructie
+Verschillende stijlen`
+                            }]
+                        }]
+                    })
+                });
+
+                if (!response.ok) {
+                    const errData = await response.json();
+                    throw new Error(errData?.error?.message || `API fout: ${response.status}`);
+                }
+                const data = await response.json();
+                const text = String(data.candidates?.[0]?.content?.parts?.[0]?.text || "");
+                subtopics = text.split('\n')
+                    .map(line => line.trim())
+                    .filter(line => line.length > 0)
+                    .slice(0, 10);
+
+                if (subtopics.length === 0) {
+                    throw new Error('Geen onderwerpen gegenereerd');
+                }
+
+                displaySubtopics();
+                hideStatus();
+            } catch (err) {
+                showError('Fout bij het genereren van onderwerpen: ' + err.message);
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        function displaySubtopics() {
+            elements.subtopicsList.innerHTML = '';
+            subtopics.forEach((subtopic, index) => {
+                const div = document.createElement('div');
+                div.className = 'p-4 bg-gray-50 rounded-lg border border-gray-200';
+                div.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <span class="flex items-center justify-center w-8 h-8 bg-indigo-100 text-indigo-600 rounded-full font-semibold text-sm">
+                                ${index + 1}
+                            </span>
+                            <span class="font-medium text-gray-700">${subtopic}</span>
+                        </div>
+                        <span id="status-${index}" class="text-sm"></span>
+                    </div>
+                `;
+                elements.subtopicsList.appendChild(div);
+            });
+
+            elements.subtopicCount.textContent = subtopics.length;
+            elements.subtopicsContainer.classList.remove('hidden');
+            elements.generateAllBtn.classList.remove('hidden');
+            elements.downloadBtn.classList.add('hidden');
+        }
+
+        async function generateBlog(subtopic, index) {
+            showStatus(`Blog ${index + 1}/10 wordt geschreven: ${subtopic}...`);
+            
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{
+                                text: `Schrijf een complete blogartikel over "${subtopic}" in de context van "${currentTopic}". 
+
+Het artikel moet:
+- Een pakkende titel hebben
+- Een inleiding
+- 3-4 paragrafen met inhoudelijke informatie
+- Een afsluitende conclusie
+
+Schrijf in het Nederlands, informatief en toegankelijk.`
+                            }]
+                        }]
+                    })
+                });
+
+                if (!response.ok) {
+                    const errData = await response.json();
+                    throw new Error(errData?.error?.message || `API fout: ${response.status}`);
+                }
+                const data = await response.json();
+                const blogText = String(data.candidates?.[0]?.content?.parts?.[0]?.text || "");
+                
+                blogs[subtopic] = blogText;
+                document.getElementById(`status-${index}`).innerHTML = '<span class="text-green-600 font-medium">✓ Klaar</span>';
+                
+                displayBlog(subtopic, blogText);
+            } catch (err) {
+                blogs[subtopic] = `Fout bij het genereren: ${err.message}`;
+            }
+        }
+
+        function displayBlog(subtopic, content) {
+            const div = document.createElement('div');
+            div.className = 'bg-white rounded-lg shadow-lg p-8';
+            div.innerHTML = `
+                <h3 class="text-2xl font-bold text-gray-800 mb-4 pb-3 border-b">
+                    ${subtopic}
+                </h3>
+                <div class="prose max-w-none">
+                    <div class="whitespace-pre-wrap text-gray-700 leading-relaxed">
+                        ${content}
+                    </div>
+                </div>
+            `;
+            elements.blogsContainer.appendChild(div);
+        }
+
+        async function generateAllBlogs() {
+            setLoading(true);
+            elements.generateAllBtn.classList.add('hidden');
+            elements.blogsContainer.innerHTML = '';
+            
+            for (let i = 0; i < subtopics.length; i++) {
+                await generateBlog(subtopics[i], i);
+            }
+            
+            showStatus('Alle blogs zijn klaar!');
+            setTimeout(() => hideStatus(), 3000);
+            setLoading(false);
+            elements.downloadBtn.classList.remove('hidden');
+        }
+
+        function downloadAllBlogs() {
+            let content = `BLOG SERIE: ${currentTopic.toUpperCase()}\n`;
+            content += `Gegenereerd op: ${new Date().toLocaleDateString('nl-NL')}\n`;
+            content += `${'='.repeat(60)}\n\n`;
+
+            subtopics.forEach((subtopic, index) => {
+                content += `\n\n${'#'.repeat(60)}\n`;
+                content += `BLOG ${index + 1}: ${subtopic}\n`;
+                content += `${'#'.repeat(60)}\n\n`;
+                content += blogs[subtopic] || 'Nog niet gegenereerd';
+                content += '\n\n';
+            });
+
+            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `blogs-${currentTopic.toLowerCase().replace(/\s+/g, '-')}.txt`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
