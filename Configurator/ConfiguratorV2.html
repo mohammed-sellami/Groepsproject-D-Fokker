@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boxspring Configurator</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Jost:wght@300;400;500&display=swap">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="brand">Multimobedddenn</div>
+    </header>
+
+    <div class="page">
+
+        <div style="margin-bottom:36px; animation: fadeUp .4s ease both;">
+            <h1 class="page-title">Boxspring<br><em>Configurator</em></h1>
+            <p class="page-subtitle">Stel uw boxspring volledig naar wens samen</p>
+        </div>
+
+        <!-- Welke Boxspring -->
+        <div class="section">
+            <div class="section-label">Welke Boxspring</div>
+            <div class="select-wrap">
+                <select id="modelSelect" onchange="onModelChange()">
+                    <option value="Odense">Odense</option>
+                    <option value="Osted">Osted</option>
+                    <option value="Retro">Retro</option>
+                    <option value="Solida">Solida</option>
+                    <option value="Supra">Supra</option>
+                    <option value="Escape">Escape</option>
+                    <option value="Fly">Fly</option>
+                </select>
+            </div>
+        </div>
+
+        <hr class="rule">
+
+        <!-- Kleur -->
+        <div class="section">
+            <div class="section-label">
+                Kleur
+                <span class="section-note">*dit is alleen de kleur*</span>
+            </div>
+            <div class="color-grid" id="colorGrid">
+                <div class="color-card active" onclick="selectColor('Zwart', this)">
+                    <div class="color-swatch color-swatch-zwart"><span>🛏</span></div>
+                    <div class="color-label">
+                        <div class="dot"></div> Zwart
+                    </div>
+                </div>
+                <div class="color-card" onclick="selectColor('Grijs', this)">
+                    <div class="color-swatch color-swatch-grijs"><span>🛏</span></div>
+                    <div class="color-label">
+                        <div class="dot"></div> Grijs
+                    </div>
+                </div>
+                <div class="color-card" onclick="selectColor('Bruin', this)">
+                    <div class="color-swatch color-swatch-bruin"><span>🛏</span></div>
+                    <div class="color-label">
+                        <div class="dot"></div> Bruin
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="rule">
+
+        <!-- Maten -->
+        <div class="section">
+            <div class="section-label">Maten</div>
+            <div class="size-grid" id="sizeGrid"></div>
+        </div>
+
+        <hr class="rule">
+
+        <!-- Aantal -->
+        <div class="section">
+            <div class="section-label">Aantal</div>
+            <div class="antal-wrap">
+                <button class="antal-btn" onclick="changeAantal(-1)">−</button>
+                <input class="antal-input" type="number" id="aantalInput" value="1" min="1" max="99"
+                    oninput="updateTotal()">
+                <button class="antal-btn" onclick="changeAantal(1)">+</button>
+            </div>
+        </div>
+
+        <hr class="rule">
+
+        <!-- Totaal -->
+        <div class="section">
+            <div class="summary-bar">
+                <div class="summary-left">
+                    <div class="summary-label">Totaal prijs</div>
+                    <div class="summary-price">
+                        <span class="currency">€</span><span id="totalPrice">858,00</span>
+                    </div>
+                    <div class="summary-meta" id="summaryMeta">1× Odense — Zwart — 70x200</div>
+                </div>
+                <button class="btn-opslaan" onclick="opslaan()">Opslaan</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="toast" id="toast">
+        <div class="toast-title">✓ Opgeslagen</div>
+        <div id="toastBody"></div>
+    </div>
+
+    <script>
+        const DATA = {
+            Odense: { base: 858, sizes: [["70x200", 0], ["70x210", 60], ["70x220", 120], ["80x200", 0], ["80x210", 60], ["80x220", 120], ["90x200", 0], ["90x210", 60], ["90x220", 120], ["100x200", 120], ["100x210", 200], ["100x220", 280], ["120x200", 280], ["120x210", 380], ["120x220", 490]] },
+            Osted: { base: 858, sizes: [["70x200", 0], ["70x210", 70], ["70x220", 140], ["80x200", 0], ["80x210", 70], ["80x220", 140], ["90x200", 0], ["90x210", 70], ["90x220", 140], ["100x200", 80], ["100x210", 160], ["100x220", 250], ["120x200", 280], ["120x210", 410], ["120x220", 530]] },
+            Retro: { base: 858, sizes: [["70x200", 0], ["70x210", 70], ["70x220", 150], ["80x200", 0], ["80x210", 70], ["80x220", 150], ["90x200", 0], ["90x210", 70], ["90x220", 150], ["100x200", 100], ["100x210", 190], ["100x220", 280], ["120x200", 270], ["120x210", 380], ["120x220", 500]] },
+            Solida: { base: 858, sizes: [["70x200", 0], ["70x210", 50], ["70x220", 110], ["80x200", 0], ["80x210", 50], ["80x220", 110], ["90x200", 0], ["90x210", 50], ["90x220", 110], ["100x200", 120], ["100x210", 190], ["100x220", 270], ["120x200", 270], ["120x210", 360], ["120x220", 460]] },
+            Supra: { base: 858, sizes: [["70x200", 0], ["70x210", 80], ["70x220", 160], ["80x200", 0], ["80x210", 80], ["80x220", 160], ["90x200", -8], ["90x210", 160], ["90x220", 120], ["100x200", 80], ["100x210", 170], ["100x220", 260], ["120x200", 280], ["120x210", 380], ["120x220", 520]] },
+            Escape: { base: 1172, sizes: [["80x200", -314], ["90x200", -314], ["100x200", -164], ["120x200", 0]] },
+            Fly: { base: 858, sizes: [["70x200", 0], ["70x210", 64], ["70x220", 176], ["80x200", 0], ["80x210", 64], ["80x220", 176], ["90x200", 0], ["90x210", 64], ["90x220", 176], ["100x200", 84], ["100x210", 164], ["100x220", 250], ["120x200", 274], ["120x210", 380], ["120x220", 490]] },
+        };
+
+        let state = { model: 'Odense', color: 'Zwart', size: '70x200', aantal: 1 };
+
+        function fmtEur(amount) { return amount.toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+        function getExtra(model, size) { const row = DATA[model].sizes.find(s => s[0] === size); return row ? row[1] : 0; }
+        function calcTotal() { return (DATA[state.model].base + getExtra(state.model, state.size)) * state.aantal; }
+
+        function renderSizes() {
+            const grid = document.getElementById('sizeGrid');
+            const sizes = DATA[state.model].sizes;
+            grid.innerHTML = '';
+            sizes.forEach(([name, extra]) => {
+                let extraHtml = '';
+                if (extra > 0) extraHtml = `<span class="size-extra positive">+${fmtEur(extra)} €</span>`;
+                else if (extra < 0) extraHtml = `<span class="size-extra negative">${fmtEur(extra)} €</span>`;
+                grid.innerHTML += `<div class="size-option ${name === state.size ? 'active' : ''}" onclick="selectSize('${name}', this)">
+                    <input type="radio" name="size" value="${name}" ${name === state.size ? 'checked' : ''}>
+                    <div class="size-dot"></div><span class="size-name">${name}</span>${extraHtml}</div>`;
+            });
+        }
+
+        function onModelChange() { state.model = document.getElementById('modelSelect').value; state.size = DATA[state.model].sizes[0][0]; renderSizes(); updateTotal(); }
+        function selectColor(color, el) { state.color = color; document.querySelectorAll('.color-card').forEach(c => c.classList.remove('active')); el.classList.add('active'); updateTotal(); }
+        function selectSize(size, el) { state.size = size; document.querySelectorAll('.size-option').forEach(s => s.classList.remove('active')); el.classList.add('active'); updateTotal(); }
+        function changeAantal(delta) { const input = document.getElementById('aantalInput'); let val = Math.max(1, Math.min(99, (parseInt(input.value) || 1) + delta)); input.value = val; state.aantal = val; updateTotal(); }
+        function updateTotal() { state.aantal = Math.max(1, parseInt(document.getElementById('aantalInput').value) || 1); document.getElementById('totalPrice').textContent = fmtEur(calcTotal()); document.getElementById('summaryMeta').textContent = `${state.aantal}× ${state.model} — ${state.color} — ${state.size}`; }
+        function opslaan() {
+            document.getElementById('toastBody').innerHTML = `${state.model} · ${state.color} · ${state.size}<br>Aantal: ${state.aantal}<br><strong>€ ${fmtEur(calcTotal())}</strong>`;
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 4000);
+        }
+
+        renderSizes();
+        updateTotal();
+    </script>
+</body>
+
+</html>
