@@ -1,0 +1,11 @@
+Releasenotes sprint 5
+
+
+
+wij hebben deze sprint alles afgerond en klaargemaakt voor de test omgeving en na de test omgeving eventuele bugs opgelost.
+
+we hebben bij de chatbot de prompt veranderd naar een iets specifiekere prompt
+de autoblog kan nu flexibel kiezen hoe groot je je blog wil
+en de configurator is omgezet in code ipv gravity forms.
+
+alles is getest en goodgekeurd door de werkgever en zou klaar moeten zijn om ingeleverd te worden
