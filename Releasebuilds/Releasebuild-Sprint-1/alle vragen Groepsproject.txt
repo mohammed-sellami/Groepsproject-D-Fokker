@@ -1,0 +1,73 @@
+Je kunt dit het best opdelen per onderdeel (configurator, AR, AI, etc.) en per onderdeel gerichte vragen stellen over doel, inhoud, techniek en beheer. Hieronder staan concrete voorbeeldvragen die je één-op-één naar de klant kunt sturen (of in een intakeformulier zetten).[1][2]
+
+## Algemeen project / scope
+
+- Wat is het hoofddoel van de nieuwe site (meer verkopen, minder telefonische vragen, meer leadgeneratie, branding)?[3][1]
+- Wat zijn de belangrijkste doelgroepen (consument/retail, B2B, dealers)?[4]
+- Is dit een volledige rebuild of doorontwikkeling van de bestaande site en codebase? Zo ja: wat moet behouden blijven?[5]
+- Wat is het gewenste budgetbereik en de prioritering: welke onderdelen zijn “must have” en welke “nice to have”?[6][1]
+- Wie is de eindbeslisser bij scope-wijzigingen en nieuwe wensen (één project owner)?[5]
+
+## Klikbare foto / interactieve visuals
+
+- Wil de klant statische foto’s met hotspots, of 3D/360-views met hotspots, of ook video-overlay? Geef voorbeelden (bijv. de genoemde “beyond time”).[7][8]
+- Welke informatie moet in een hotspot komen (tekst, prijzen, links naar productpagina, video, download)?  
+- Moet de klant zelf hotspots kunnen beheren in het CMS (ACF-velden, custom post type) of mag dit alleen via jullie gebeuren?  
+- Hoeveel van dit soort beelden verwacht de klant (1–3, tientallen, honderden)? Dit is belangrijk voor performance en beheersbaarheid.[9]
+
+## Uitbreiding templates via ACF
+
+- Welke paginatypes moeten flexibel worden (home, product, categorie, inspiratie/blog, landingspagina’s, configurator-pagina)?[4]
+- Wil de klant zelf pagina’s kunnen opbouwen met herbruikbare blokken (ACF flexible content) of vaste layouts met invulvelden?  
+- Zijn er bestaande design-wires of componentenbibliotheken waarop de ACF-structuur moet aansluiten?
+
+## Boxspring / matrasconfigurator 00000000000000000000000000000000000000000000000000000009
+
+- Wat is het exacte doel: alleen advies (aanbevolen product) of direct een configureerbaar winkelmandje/prijsberekening?[10][9]
+- Welke stappen/zorgroutes moeten erin (bijv. type slaper, gewicht, klachten, gewenste maat, hardheid, materiaal, budget)? Laat de klant alle vragen/keuzes in een lijst aanleveren.[9]
+- Hoe wordt prijs opgebouwd: vaste bundels, optiebasis, staffels, promoties, combinatieregels (bijvoorbeeld bepaalde opties kunnen niet samen)?[9]
+- Moet de configuratie opslaanbaar/deelbaar zijn (PDF, e-mail, account, offerte)?[9]
+- Is realtime 3D-visualisatie gewenst of volstaat beeldcombinatie (2D-renders/foto’s)?[8][7]
+- Welke koppelingen zijn nodig (webshop, ERP, voorraad, CRM)?[9]
+
+## AI chatbox (Q&A)
+
+- Welke vragen moet de chat vooral kunnen beantwoorden: productinformatie, levertijden, orders, garantie, algemeen slaapadvies?  
+- Welke bronnen mogen gebruikt worden om de AI te “voeden” (huidige sitecontent, PDF’s, handleidingen, interne FAQ)?[11]
+- Mag de chatbot ook klantgebonden info tonen (orderstatus, accountgegevens)? Zo ja: welke systemen/API’s zijn beschikbaar en hoe wordt authenticatie geregeld?  
+- In welke talen moet de chatbot werken en tijdens welke tijden moet hij bereikbaar zijn (24/7, alleen ondersteuning)?[1]
+
+## AI autoblog generator
+
+- Wat is het doel van de automatische blogs: SEO, inspiratie, producteducatie, nieuws?  
+- Welke bronnen mogen gebruikt worden (eigen blog, productfeeds, externe RSS, nieuwswebsites binnen bepaalde grenzen)?[12]
+- Wie keurt content goed: moet alles eerst handmatig worden beoordeeld voordat het live gaat?  
+- Moet de AI-tekst ook automatisch worden aangevuld met interne links, call-to-actions en productaanbevelingen?
+
+## Productvergelijker
+
+- Welke attributen moeten vergeleken worden (prijs, afmeting, hardheid, materiaal, garantie, levertijd, extra’s)?[9]
+- Hoe kiest de gebruiker producten om te vergelijken (checkbox op productlijst, op detailpagina, via configurator-resultaten)?  
+- Moet de vergelijker alleen binnen één categorie werken, of ook tussen verschillende producttypes (bedden vs matrassen)?  
+
+## AR-tool voor product in kamer
+
+- Op welke apparaten moet AR werken (alleen mobiel, ook desktop via QR/link)?[13][7]
+- Zijn er al 3D-modellen beschikbaar of moeten die nog gemaakt worden (van alle varianten of van basisproducten)?[7][13]
+- Is AR nodig voor alle producten of slechts voor een selectie (topmodellen, campagnes)?  
+- Hoe diep moet de integratie zijn: simpele viewer vanuit productpagina, of volledige koppeling met configurator (AR van de gekozen configuratie)?[13]
+
+## Overige tools en leuke features
+
+- “Prijs per nacht”-calculator: welke invoer moet de gebruiker geven (aanschafprijs, levensduur, aantal nachten per jaar, restwaarde)? Wat is de gewenste output?  
+- Zijn er nog andere rekenhulpen gewenst (bijv. total cost of ownership, financiering, onderhoud)?[14]
+- Welke “AI-mogelijkheden” ziet de klant zelf nog (persoonlijk advies, aanbevelingsengine, upsell/cross-sell)?
+
+## Techniek, beheer en randvoorwaarden
+
+- Op welke bestaande systemen moet worden aangesloten (CMS, webshop, betaalprovider, CRM, PIM, marketing automation)?[1]
+- Wie beheert na livegang content, configuraties en AI-modellen? Is daar intern capaciteit voor of verwacht de klant beheer bij jullie onder te brengen?  
+- Zijn er eisen rond performance, laadsnelheid, toegankelijkheid en beveiliging (bijv. AVG, logging, datalocatie)?[15][11]
+- Wat is de gewenste opleverplanning per onderdeel (MVP en latere fases)?
+
+Met antwoorden op deze vragen kun je de urenramingen aanscherpen, “nice to have” van “must have” scheiden en concrete user stories/requirements uitschrijven per module.[2][10]
