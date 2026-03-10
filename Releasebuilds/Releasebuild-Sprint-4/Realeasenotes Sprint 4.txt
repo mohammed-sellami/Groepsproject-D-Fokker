@@ -1,0 +1,9 @@
+Realeasenotes Sprint 4
+
+in deze sprint hebben wij de bug model not found opgelost en zijn wel nieuwe bugs gevonden 429 en 500 deze worden in volgende sprint opgelost
+
+ook hebben wij het connecten van github volooid door eerdere problemen heeft dit erge vertraging opgelopen dit is eindelijk volooid en nu staat het project ook opm github opgeslagen.
+
+
+voor de autoblog generator is ook af en klaar voor het testen.
+
