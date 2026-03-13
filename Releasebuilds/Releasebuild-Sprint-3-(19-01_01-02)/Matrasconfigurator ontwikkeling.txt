@@ -1,0 +1,13 @@
+Matrasconfigurator ontwikkeling
+
+Frontend basis configurator bouwen (stappenwizard).
+
+Keuzecomponenten per stap bouwen (maat, type, hardheid, ombouw, poten, etc.).
+
+Dynamische prijs- en levertijdupdate implementeren.
+
+Samenvattingsscherm + “in winkelmand/offerte” knop bouwen.
+
+Backend-logica voor combinatieregels en prijsregels bouwen.
+
+Koppelingen met webshop/ERP/CRM implementeren.

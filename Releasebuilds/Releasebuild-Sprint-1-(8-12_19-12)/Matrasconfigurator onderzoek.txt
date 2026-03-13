@@ -1,0 +1,13 @@
+Matrasconfigurator onderzoek
+
+Doel configurator bepalen (wat moet de klant ermee kunnen?).
+
+Doelgroep en gebruiksscenario’s uitwerken (thuis, winkel, mobiel/desktop).
+
+Productaanbod in kaart brengen (matrassen, bedden, toppers, poten, accessoires).
+
+Businessregels verzamelen (welke combinaties mogen/niet, lengte/gewicht-adviezen).
+
+Benodigde koppelingen inventariseren (webshop, ERP, voorraad, CRM).
+
+Inspiratie en best practices van andere configurators verzamelen

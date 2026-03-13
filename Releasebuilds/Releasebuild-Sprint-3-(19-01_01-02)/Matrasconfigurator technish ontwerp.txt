@@ -1,0 +1,9 @@
+Matrasconfigurator technish ontwerp
+
+Architectuur bepalen (frontend, backend, koppelingen).
+
+Datamodel uitwerken (opties, varianten, combinaties, prijzen).
+
+API’s definiëren voor prijzen, voorraad, configuratie.
+
+Security- en performance-eisen beschrijven.

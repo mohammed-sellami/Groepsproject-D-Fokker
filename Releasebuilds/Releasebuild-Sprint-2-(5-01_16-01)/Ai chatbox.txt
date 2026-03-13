@@ -1,0 +1,8 @@
+Ai chatbox
+
+Chatbot aanmaken
+vaste antwoorden geven
+koppelen met WooCommerce
+
+chatbot is afgemaakt
+klant vraagt om te chatbot uitbreiden met API, vervolg in volgende sprints

@@ -1,0 +1,22 @@
+Chatbot API Bugs oplossen
+|
+Bug oplossen Chatbot API
+
+met deze sprint hebben we te maken gehad met error code 404 (AI model not found)
+
+eerst dachten ik dat het aan mij code lag en de ai model niet goed geregistreerd was. na van alles te probeert te hebben zijn we de achter gekomen dat de model die in de code niet werd ondersteund in onze API sleutel na het wijzigen van model werd deze error opgelost.
+
+dit veroorzaakte wel een nieuwe error (429 en 500)
+dit word vervolgt in de volgende sprint
+2026-03-02
+Gevonden door Nevin
+bevind zich in V3
+
+
+Autoblog bug report:
+
+Bug oplossen Autoblog API
+
+met deze sprint hebben we te maken gehad met error faild to fetch
+
+eerst dacht ik dat het aan mij code lag en de api key niet goed is bevestigd of herkend. Na van alles geprobeerd te hebben zijn we erachter gekomen dat het lag aan de software key dat we een maximum mogen gebruiken per minuut(5) en perdag(20)

@@ -1,0 +1,15 @@
+Chatbot API Bugs oplossen
+
+Bug oplossen Chatbot API
+
+we hebben te maken gehad met error 500 en 429.
+
+500 en 429 werden veroorzaakt door een pull request die denied werd omdat de rate limit bereikt was
+
+dit kwam doordat het model dat gebruikt wat had een rate limit van 0 voor de free tier. dit is gefixt door te switchen naar een model die een rate limit hoger dan 0 had
+
+hierna word de bot klaar gemaakt voor testing
+
+2026-03-04
+Bug gevonden/veroorzaakt door Nevin
+Deze bug vind zich plaats in V4

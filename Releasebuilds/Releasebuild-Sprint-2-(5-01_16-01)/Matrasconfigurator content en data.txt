@@ -1,0 +1,9 @@
+Matrasconfigurator content en data
+
+Optielijsten invoeren (maten, types, stoffen, kleuren, poten).
+
+Prijs- en voorraaddata koppelen.
+
+Helpt teksten schrijven (uitleg bij keuzes, foutmeldingen).
+
+Afbeeldingen verzamelen en koppelen aan opties.

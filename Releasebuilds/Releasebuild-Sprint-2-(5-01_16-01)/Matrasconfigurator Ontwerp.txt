@@ -1,0 +1,13 @@
+Matrasconfigurator Ontwerp
+
+User flow van de configurator schetsen (stappen: maat → type → hardheid → ombouw, etc.).
+
+Keuzestappen en velden definiëren per stap (opties, verplichte velden, defaults).
+
+Validatieregels en logica uitwerken (adviesregels, blokkades bij verkeerde combinaties).
+
+Wireframes maken voor desktop en mobiel.
+
+Visueel ontwerp bepalen (stijl, kleuren, iconen, foutmeldingen, laadstates).
+
+Ontwerp samenvattingsscherm en CTA (overzicht gekozen bed/matras + prijs + “in winkelmand”).

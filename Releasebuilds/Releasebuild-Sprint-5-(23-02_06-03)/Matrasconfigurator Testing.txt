@@ -1,0 +1,11 @@
+Matrasconfigurator Testing
+
+Testscenario’s opstellen (alle stappen, combinaties, randgevallen).
+
+Functioneel testen van configurator.
+
+Koppelingen testen (komen orders/aanvragen goed aan?).
+
+Gebruikerstesten met enkele klanten/verkopers plannen.
+
+Bugs registreren en prioriteren

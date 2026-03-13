@@ -1,0 +1,4 @@
+Chatbot API toevoegen
+
+Chatbot uitbreiden tot API
+zijn nog veel bugs worden in volgende sprint opgelost
