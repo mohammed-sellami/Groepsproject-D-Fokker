@@ -1,11 +1,17 @@
 Releasenotes sprint 5
 
 
+Deze sprint hebben we alles afgerond en klaargezet voor de testomgeving. Na het testen zijn de gevonden bugs opgelost.
 
-wij hebben deze sprint alles afgerond en klaargemaakt voor de test omgeving en na de test omgeving eventuele bugs opgelost.
+Autoblog: – verbeteringen:
 
+De autoblog ondersteunt nu flexibele bloglengtes. De gebruiker kan zelf kiezen hoe lang de blog moet worden (300, 500 of 800 woorden).
+De foutmelding "Failed to Fetch" is ontdekt door Mohammed tijdens het testen en vervolgens samen opgelost door Nevin en Mohammed.
+
+chatbot:
 we hebben bij de chatbot de prompt veranderd naar een iets specifiekere prompt
-de autoblog kan nu flexibel kiezen hoe groot je je blog wil
-en de configurator is omgezet in code ipv gravity forms.
+
+configurator:
+en de configurator is omgezet in code in plaats van gravity forms.
 
 alles is getest en goodgekeurd door de werkgever en zou klaar moeten zijn om ingeleverd te worden
