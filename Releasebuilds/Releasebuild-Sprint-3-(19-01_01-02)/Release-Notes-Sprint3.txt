@@ -1,7 +1,0 @@
-De Chatbot hebben wij een API deraan willen toevoegen daarin kwamen veel bugs zoals 404 Model not found. voor nu laten we dat en gaan we dat volgende keer oplossen.
-
-voor de matras configurator gaan we nu door op het technische ontwerp. Architectuur bepalen(frontend, backend, Koppelingen).
-
-API's definiëren voor prijzen, voorraad configuratie.
-
-Security en performance-eisen beschrijven.
