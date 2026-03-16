@@ -1,17 +1,29 @@
-Releasenotes sprint 5
+Release Notes – Sprint 5
 
+Tijdens deze sprint zijn alle geplande onderdelen afgerond en klaargezet voor de testomgeving. Na het testen zijn de gevonden bugs opgelost. De applicatie is vervolgens opnieuw getest en goedgekeurd door de opdrachtgever.
 
-Deze sprint hebben we alles afgerond en klaargezet voor de testomgeving. Na het testen zijn de gevonden bugs opgelost.
+Gerealiseerde features:
 
-Autoblog: – verbeteringen:
+Autoblog – verbeteringen:
 
-De autoblog ondersteunt nu flexibele bloglengtes. De gebruiker kan zelf kiezen hoe lang de blog moet worden (300, 500 of 800 woorden).
-De foutmelding "Failed to Fetch" is ontdekt door Mohammed tijdens het testen en vervolgens samen opgelost door Nevin en Mohammed.
+	De autoblog ondersteunt nu flexibele bloglengtes. De gebruiker kan kiezen tussen blogs van 300, 500 of 800 woorden.
 
-chatbot:
-we hebben bij de chatbot de prompt veranderd naar een iets specifiekere prompt
+Chatbot:
 
-configurator:
-en de configurator is omgezet in code in plaats van gravity forms.
+	De prompt van de chatbot is aangepast naar een specifiekere prompt om betere antwoorden te genereren.
 
-alles is getest en goodgekeurd door de werkgever en zou klaar moeten zijn om ingeleverd te worden
+Configurator:
+
+	De configurator is omgezet van Gravity Forms naar een eigen code-implementatie.
+
+Opgeloste bugs:
+
+	De foutmelding "Failed to Fetch" werd tijdens het testen ontdekt door Mohammed en is vervolgens opgelost door Nevin en Mohammed.
+
+Niet gerealiseerde features:
+
+	Alle geplande features voor deze sprint zijn gerealiseerd.
+
+Known issues:
+
+	Tijdens het testen zijn geen resterende bugs of bekende problemen gevonden.
