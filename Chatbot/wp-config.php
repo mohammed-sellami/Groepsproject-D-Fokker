@@ -98,7 +98,7 @@ $table_prefix = 'wp_';
 if ( ! defined( 'WP_DEBUG' ) ) {
 	define( 'WP_DEBUG', false );
 }
-define('GEMINI_API_KEY', '**************************');
+define('GEMINI_API_KEY', '***************************' );
 define( 'WP_REDIS_HOST', '10.9.52.50' );
 define( 'WP_REDIS_PORT', 6379 );
 define( 'WP_REDIS_PASSWORD', 'SyhPRtN7QTka4oDkuBRtjEhqijCYKoAi' );
