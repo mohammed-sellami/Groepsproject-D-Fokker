@@ -1,7 +1,0 @@
-Releasebuild notes sprint 2
-
-in sprint 2 hebben wij een start gemaakt aan onze chatbot en matras configurator in gravity forms
-
-onze chatbot beantwoord nu hard gecodeerde vragen hiervoor moeten wij nog een API toevoegen.
-
-voor de matras configurator moeten er nog wel extra bij zoals nachtkastje en bv hoofboord/voetboord moeten ook nog toegevoegd worden.

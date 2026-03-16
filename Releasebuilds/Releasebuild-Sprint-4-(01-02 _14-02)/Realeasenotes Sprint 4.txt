@@ -1,9 +1,69 @@
-Realeasenotes Sprint 4
+Release Notes – Sprint 4
+Project: Groepsproject-D-Fokker
+Datum: 14 februari 2026
+Branch: main
+Gemaakt door Nevin
 
-in deze sprint hebben wij de bug model not found opgelost en zijn wel nieuwe bugs gevonden 429 en 500 deze worden in volgende sprint opgelost
+Chatbot – V9 (ChatbotV9.php)
+De chatbot is in sprint 4 verder doorontwikkeld en volledig verplaatst naar het child theme van WordPress. Dit zorgt voor een schonere architectuur waarbij de parent theme niet meer aangepast hoeft te worden.
+​
 
-ook hebben wij het connecten van github volooid door eerdere problemen heeft dit erge vertraging opgelopen dit is eindelijk volooid en nu staat het project ook opm github opgeslagen.
+Nieuwe functionaliteiten:
 
+Chatbot code volledig verplaatst naar child theme (functions.php)
+​
 
-voor de autoblog generator is ook af en klaar voor het testen.
+Parent styles worden nu correct geladen via het child theme
+​
 
+Integratie met Gemini 2.5 Flash model via Google Generative Language API
+​
+
+Nieuw REST API endpoint: /chatbot/v1/ai-chat voor AI-gestuurde gesprekken
+​
+
+Nieuw REST API endpoint: /chatbot/v1/order voor WooCommerce orderstatusopvragen
+​
+
+Chatbot fungeert als matras- en slaapexpert met productkennis over Bremafa matrassen (pocketvering, koudschuim, latex, traagschuim)
+​
+
+Retry-logica ingebouwd bij 429 (rate limit) en 500 errors
+​
+
+Gespreksgeschiedenis (laatste 3 berichten) wordt meegestuurd als context
+​
+
+Auto Blog Generator – V6 (AutoBlogv6.html)
+De blog generator is geüpdatet naar versie 6 met een volledig vernieuwde gebruikersinterface.
+​
+
+Nieuwe functionaliteiten:
+
+Ondersteuning voor instelbare bloglengte: 300 (kort), 500 (standaard) of 800 woorden (uitgebreid)
+​
+
+Automatisch genereren van 10 subtopics op basis van een ingevoerd onderwerp
+​
+
+Alle blogs in één klik genereren via de knop "Genereer alle blogs"
+​
+
+Blogs downloaden als één .txt-bestand
+​
+
+Verbeterde UI met Tailwind CSS, laadindicatoren en foutmeldingen
+​
+
+Bug Reports & Opgeloste Issues
+Chatbot API – Error 404 (AI model not found)
+Het gebruikte AI-model werd niet ondersteund door de API-sleutel, wat resulteerde in een 404-fout. Na het wijzigen van het model naar een ondersteunde versie is deze fout opgelost. Dit veroorzaakte vervolgens 429 en 500 errors, die worden opgepakt in de volgende sprint.
+​
+
+Auto Blog Generator – "Failed to Fetch"
+De Autoblog gaf een "failed to fetch"-fout door het bereiken van de API-limiet (max. 5 verzoeken per minuut / 20 per dag). De oorzaak lag bij de API-sleutellimieten, niet bij de code zelf.
+​
+
+GitHub & Deployment
+GitHub is gekoppeld via WP Pusher voor automatische deployment van het WordPress child theme. Dit proces is uitgevoerd met behulp van ChatGPT.
+​

@@ -1,5 +1,6 @@
 Release Notes – Sprint 5
-
+Datum: 6 Maart 2026
+Gemaakt door Mohammed Sellami
 Tijdens deze sprint zijn alle geplande onderdelen afgerond en klaargezet voor de testomgeving. Na het testen zijn de gevonden bugs opgelost. De applicatie is vervolgens opnieuw getest en goedgekeurd door de opdrachtgever.
 
 Gerealiseerde features:

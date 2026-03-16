@@ -1,0 +1,87 @@
+RELEASE NOTE — SPRINT 2
+Boxspring Configurator & AI Chatbot
+
+Sprint   : Sprint 2
+Datum    : 16 Januari 2026
+Status   : Opgeleverd
+Gemaakt  : Nevin Zweere
+
+
+1. OVERZICHT
+----------------------------------------------------------------
+In Sprint 2 zijn twee grote functionaliteiten opgeleverd: een
+interactieve Boxspring Configurator en een AI-gestuurde chatbot
+voor de WooCommerce webshop. Beide features zijn volledig
+ontworpen, gebouwd en getest binnen deze sprint.
+
+
+2. OPGELEVERDE FEATURES
+----------------------------------------------------------------
+
+2.1 Boxspring Configurator
+--------------------------
+De configurator stelt klanten in staat een boxspring stap voor
+stap samen te stellen via een overzichtelijk formulier.
+
+Functionaliteiten:
+  - Keuzelijst voor boxspring-model (bijv. Odense)
+  - Kleuroptie met visuele preview (Zwart, Grijs, Bruin)
+  - Maatselectie met meer dan 15 varianten en prijsopslag
+  - Aantalveld voor het opgeven van het gewenste aantal stuks
+  - Optie voor hoofdbord (Ja / Nee)
+  - Dynamische totaalprijs berekening op basis van opties
+  - 'Opslaan'-knop voor het opslaan van de configuratie
+
+Technische implementatie:
+  - Gebouwd met Gravity Forms in WordPress
+  - Prijslogica en validatieregels verwerkt in formulier
+  - Responsive layout voor desktop en mobiel
+
+
+2.2 AI Chatbot (v1.0) — opgeleverd 8 januari 2026
+---------------------------------------------------
+De eerste versie van de chatbot is geïntegreerd in de
+WooCommerce webshop met vaste, hard-gecodeerde antwoorden
+op veelgestelde vragen.
+
+Ondersteunde onderwerpen:
+  - Ordertracking
+  - Productaanbevelingen
+  - Retourneren & terugbetaling
+  - Verzendopties en levertijden
+  - Betaalmethoden
+  - Kortingen & actiocodes
+  - Contact & support
+  - Accountbeheer
+
+Quick Actions:
+  - 'Track Order'   — directe ordertracking
+  - 'Product Help'  — hulp bij productkeuze
+  - 'Returns'       — retourprocedure
+
+Technische implementatie:
+  - Gebouwd als React component (WooCommerceChatbot)
+  - Hard-gecodeerde antwoordlogica op basis van sleutelwoorden
+  - Koppeling met WooCommerce gerealiseerd
+
+
+3. MATRASCONFIGURATOR — VOORBEREIDEND WERK
+----------------------------------------------------------------
+Naast de opgeleverde features is voorbereidend werk verricht
+voor de Matrasconfigurator:
+
+  - User flow geschetst (maat → type → hardheid → ombouw)
+  - Keuzestappen en velden gedefinieerd per stap
+  - Validatieregels en advieslogica uitgewerkt
+  - Wireframes gemaakt voor desktop en mobiel
+  - Content en optielijsten voorbereid
+  - Prijs- en voorraaddata structuur bepaald
+
+
+4. VERVOLGSTAPPEN
+----------------------------------------------------------------
+  - Sprint 3+: Chatbot uitbreiden met API-integratie
+  - Sprint 3+: Dynamische WooCommerce productdata in chatbot
+  - Toekomstig: Implementatie Matrasconfigurator
+
+================================================================
