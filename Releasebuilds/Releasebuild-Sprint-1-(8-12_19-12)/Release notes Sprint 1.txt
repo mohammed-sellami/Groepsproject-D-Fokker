@@ -1,12 +1,23 @@
-Release notes Sprint 1
+📋 Releasenotes Sprint 1 Groepsproject SD
+Datum: 2025 19 December
+Gemaakt door Nevin
+Versie: 1.0 – Initiële oplevering / Sprint review
 
-in deze sprint hebben wij gefocust op alles goed klaar zetten.
+🚀 Nieuwe features & modules (in ontwikkeling)
+De volgende onderdelen zijn gedefinieerd en worden opgepakt binnen het project:
 
-wij hebben wordpress netjes klaar gezet en onze ""werkplek" netjes klaargezet door onze website netjes en overzichtelijk te designen
+Boxspring / Matrasconfigurator – Een stap-voor-stap configurator waarmee klanten een passend matras of boxspring kunnen samenstellen op basis van slaaptype, maat, hardheid en budget.
+AI Chatbot – Een chatbot die veelgestelde vragen beantwoordt over producten, levertijden en slaapadvies, gevoed vanuit bestaande sitecontent en FAQ's.
+AI Autoblog generator – Automatisch gegenereerde blogcontent voor SEO en producteducatie, met handmatige goedkeuringsstap vóór publicatie.
 
-wij hebben ook duidelijkheid voor de matras configurator gevraagd aan onze werkgever.
+🔍 Onderzoeksresultaten – Matrasconfigurator
+Uit het vooronderzoek zijn de volgende aandachtspunten naar voren gekomen:
 
-hiervoor hebben wij een vragenlijst met alle eventuele vragen opgesteld met ze alle,
+Doel van de configurator moet nog scherp worden gesteld: gaat het om puur advies (aanbevolen product tonen) of ook direct bestellen/prijsberekening?
+Doelgroepen en scenario's zijn in kaart gebracht: gebruik thuis, in de winkel en op mobiel/desktop.
+Productaanbod dat gedekt moet worden: matrassen, bedden, toppers, poten en accessoires.
+Businessregels moeten nog worden aangeleverd door de klant: welke combinaties zijn wel/niet mogelijk, en welke lengte/gewicht-adviezen gelden er?
+Koppelingen met externe systemen (webshop, ERP, voorraad, CRM) moeten nog worden geïnventariseerd.
+Inspiratie van bestaande configurators wordt verzameld als basis voor de UX en technische aanpak.
 
-eventuele nieuwe functies er bij gedaan en hiervan goedkeuring/afkeuring voor gekregen.
 
