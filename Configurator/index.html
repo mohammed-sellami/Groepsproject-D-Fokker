@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boxspring Configurator</title>
+
+    <!--
+        Content Security Policy:
+        - script-src 'self'  → alleen eigen JS-bestanden, geen inline scripts
+        - style-src 'self' + Google Fonts
+        - font-src Google Fonts
+        - img-src 'self'
+    -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';
+                 script-src 'self';
+                 style-src 'self' https://fonts.googleapis.com;
+                 font-src https://fonts.gstatic.com;
+                 img-src 'self' data:;">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Jost:wght@300;400;500&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="brand">Multimobedden</div>
+    </header>
+
+    <div class="page">
+
+        <div style="margin-bottom:36px; animation: fadeUp .4s ease both;">
+            <h1 class="page-title">Boxspring<br><em>Configurator</em></h1>
+            <p class="page-subtitle">Stel uw boxspring volledig naar wens samen</p>
+        </div>
+
+        <!-- ── Welke Boxspring ── -->
+        <div class="section">
+            <div class="section-label">Welke Boxspring</div>
+            <div class="select-wrap">
+                <!--
+                    Geen inline onchange="..." meer.
+                    Events worden in view.js gekoppeld via addEventListener.
+                -->
+                <select id="modelSelect">
+                    <option value="Odense">Odense</option>
+                    <option value="Osted">Osted</option>
+                    <option value="Retro">Retro</option>
+                    <option value="Solida">Solida</option>
+                    <option value="Supra">Supra</option>
+                    <option value="Escape">Escape</option>
+                    <option value="Fly">Fly</option>
+                </select>
+            </div>
+        </div>
+
+        <hr class="rule">
+
+        <!-- ── Kleur ──
+             data-kleur attribuut wordt gelezen door view.js (geen inline onclick) -->
+        <div class="section">
+            <div class="section-label">
+                Kleur
+                <span class="section-note">*dit is alleen de kleur*</span>
+            </div>
+            <div class="color-grid" id="colorGrid">
+                <div class="color-card active" data-kleur="Zwart">
+                    <div class="color-swatch color-swatch-zwart">
+                        <img src="images/Basis_Fr_ 88_nr7079.jpg" alt="Zwart stof">
+                    </div>
+                    <div class="color-label">
+                        <div class="dot"></div> Zwart
+                    </div>
+                </div>
+                <div class="color-card" data-kleur="Grijs">
+                    <div class="color-swatch color-swatch-grijs">
+                        <img src="images/Basis_Fr_ 87_nr7078.jpg" alt="Grijs stof">
+                    </div>
+                    <div class="color-label">
+                        <div class="dot"></div> Grijs
+                    </div>
+                </div>
+                <div class="color-card" data-kleur="Bruin">
+                    <div class="color-swatch color-swatch-bruin">
+                        <img src="images/Basis_Fr_ 71_nr5082.jpg" alt="Bruin stof">
+                    </div>
+                    <div class="color-label">
+                        <div class="dot"></div> Bruin
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="rule">
+
+        <!-- ── Maten (worden dynamisch ingevuld door view.js) ── -->
+        <div class="section">
+            <div class="section-label">Maten</div>
+            <div class="size-grid" id="sizeGrid"></div>
+        </div>
+
+        <hr class="rule">
+
+        <!-- ── Aantal ──
+             data-delta attribuut wordt gelezen door view.js -->
+        <div class="section">
+            <div class="section-label">Aantal</div>
+            <div class="antal-wrap">
+                <button class="antal-btn" data-delta="-1">−</button>
+                <input class="antal-input" type="number" id="aantalInput" value="1" min="1" max="99">
+                <button class="antal-btn" data-delta="1">+</button>
+            </div>
+        </div>
+
+        <hr class="rule">
+
+        <!-- ── Hoofdbord ──
+             data-waarde attribuut wordt gelezen door view.js -->
+        <div class="section">
+            <div class="section-label">Hoofdbord?
+                <span class="section-note">*deze kleur is het zelfde als de boxspring*</span>
+            </div>
+            <div class="radio-group" id="hoofdbordGroup">
+                <label class="radio-option" data-waarde="Ja">
+                    <input type="radio" name="hoofdbord" value="Ja">
+                    <div class="rdot"></div> Ja
+                </label>
+                <div class="hb-sub" id="hbSub">
+                    <div class="hb-sub-label">Kies een hoofdbord</div>
+                    <label class="radio-option" data-waarde="Capi">
+                        <input type="radio" name="hbtype" value="Capi">
+                        <div class="rdot"></div> Capi
+                    </label>
+                    <label class="radio-option" data-waarde="Espirit">
+                        <input type="radio" name="hbtype" value="Espirit">
+                        <div class="rdot"></div> Espirit
+                    </label>
+                    <label class="radio-option" data-waarde="Fenya">
+                        <input type="radio" name="hbtype" value="Fenya">
+                        <div class="rdot"></div> Fenya
+                    </label>
+                </div>
+                <label class="radio-option active" data-waarde="Nee">
+                    <input type="radio" name="hoofdbord" value="Nee" checked>
+                    <div class="rdot"></div> Nee
+                </label>
+            </div>
+        </div>
+
+        <hr class="rule">
+
+        <!-- ── Totaal ── -->
+        <div class="section">
+            <div class="summary-bar">
+                <div class="summary-left">
+                    <div class="summary-label">Totaal prijs</div>
+                    <div class="summary-price">
+                        <span class="currency">€</span><span id="totalPrice">858,00</span>
+                    </div>
+                    <div class="summary-meta" id="summaryMeta">1× Odense — Zwart — 70x200</div>
+                </div>
+                <!-- id="btnOpslaan" zodat view.js het kan vinden zonder inline onclick -->
+                <button class="btn-opslaan" id="btnOpslaan">Opslaan</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ── Toast ── -->
+    <div class="toast" id="toast">
+        <div class="toast-title">✓ Opgeslagen</div>
+        <div id="toastBody"></div>
+    </div>
+
+    <!--
+        Scripts worden ONDERAAN geladen, in de juiste volgorde:
+        1. Model  → kent geen DOM
+        2. View   → kent DOM, kent geen logica
+        3. Controller → start de app via DOMContentLoaded
+    -->
+    <script src="model.js"></script>
+    <script src="view.js"></script>
+    <script src="controller.js"></script>
+
+</body>
+</html>
